@@ -1,0 +1,409 @@
+<html>
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/queue-async/1.0.7/queue.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.19/topojson.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.20/topojson.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.6.1/lodash.min.js"></script>
+   <script src = "https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js" ></script>
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.7.1/d3-tip.js"></script>
+    <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+   
+   <style>
+   
+  .nav ul {
+                                    
+                  list-style: none;
+                  background-color: #444;
+                  text-align: left;
+                  padding: 0;
+                  margin: 0;
+                  
+              }
+              .nav li {
+                  font-family: 'Oswald', sans-serif;
+                  font-size: 1.2em;
+                  line-height: 20px;
+                  height: 30px;
+                  border-bottom: 1px solid #888;
+              }
+             .nav a {
+                 text-decoration: none;
+                 color: #fff;
+                 display: block;
+                 transition: .3s background-color;
+             }
+             .nav a:hover {
+                 background-color: #005f5f;
+             }
+             .nav a.active {
+                 background-color: #fff;
+                 color: #444;
+                 cursor: default;
+             }
+             h1,h2,h3,h4,h5,p {
+           color: black;
+           font-family: 'Arimo', sans-serif; 
+           }
+       #TOC ul {
+           list-style: none;
+           padding-left: 2px;
+           }
+       
+            .nav li {
+                width: 150px;
+                border-bottom: none;
+                height: 30px;
+                line-height: 30px;
+                font-size: 1.2em;
+                }
+            .nav li {
+                display: inline-block;
+                margin-right: -4px;
+                margin-top: 0
+                } 
+   
+   
+   
+     path {
+           stroke: black;
+           stroke-width: 1px;
+           fill: none;
+           }  
+           
+           div.tooltip {
+      position: absolute;
+      text-align: center;
+      padding: 4px;
+      background: #fff;
+      border: 0px;
+      pointer-events: none;
+    }
+.label {
+      font-weight: bold;
+      text-anchor: middle;
+      cursor:default; } 
+      
+   .hidden {
+        display: none;
+   }   
+    .svg:hover {
+        fill: #666;
+    }
+    
+    .counties {
+        stroke: #000;
+        fill-opacity: .7;
+    }
+    
+    
+    body {
+    font: 11px sans-serif;
+    margin: 10px;
+  }
+  .axis path,
+  .axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+  }
+  .bar:hover {
+    fill: #bcbcbc ;
+  }
+  .x.axis path {
+    display: none;
+  }
+  .d3-tip {
+    line-height: 1;
+    font-weight: bold;
+    padding: 12px;
+    background: rgba(0, 0, 0, 0.8);
+    color: #efefef;
+    border-radius: 2px;
+  }
+  
+  .d3-tip:after {
+    box-sizing: border-box;
+    display: inline;
+    font-size: 10px;
+    width: 100%;
+    line-height: 1;
+    color: rgba(0, 0, 0, 0.8);
+    content: "\25BC";
+    position: absolute;
+    text-align: center;
+  }
+  
+  .d3-tip.n:after {
+    margin: -1px 0 0 0;
+    top: 100%;
+    left: 0;
+  }
+  
+  .hover{
+      fill: green;
+  }
+  
+  #abc{
+      position: fixed;
+  }
+    
+    
+    </style>
+    
+   
+   </head>
+   
+   <body>
+   <header>
+    <div class="nav">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="d2.html">Design 1</a></li>
+        <li><a href="d1.html">Design 2</a></li>
+        
+      </ul>
+    </div>
+  </header>
+   <section class="main-content"></section>
+   <div style="float:left", width:40%>
+   <div id="map"></div>
+   </div>
+   <div position:fixed,style="float:right", width:60%>
+       
+  <div id="vis"></div>
+  </div>
+   <script>
+   
+   var width = 800;
+   var height = 600;
+   
+   var projection =d3.geo.albersUsa()
+   .scale(800)
+   .translate([width/2 , height/2])
+   
+  var tooltip = d3.select("section")
+          .append("div")
+            .attr("class", "tooltip")
+            .style("opacity", 0);
+   
+   
+  var color1 = d3.scale.category10()
+  
+   var path = d3.geo.path()
+   .projection(projection)
+   
+   var svg = d3.select(map).append("svg")
+    .attr("width", width)
+    .attr("height", height);
+    
+    //http://stackoverflow.com/questions/20070919/adding-tooltip-in-d3-js-map
+    //http://bl.ocks.org/lhoworko/7753a11efc189a936371
+    
+   var tooltip = d3.select("section")
+    .append("div")
+      .attr("class", "tooltip")
+      .style("opacity", 1);
+      
+   
+   
+   
+   
+  function createmap(usstates,countyvote) {
+      
+      
+      function mouseover(){
+        tooltip.transition()
+          .duration(200)
+          .style("opacity", .7);
+   }
+   function mousemove(d){
+          if(expensesAvgAmount[d.id]!= undefined){
+          tooltip .html(expensesAvgAmount[d.id][0].candidate +"<br>"+ "votes :"+ expensesAvgAmount[d.id][0].votes +"<br>" + "County:" +expensesAvgAmount[d.id][0].county )
+            
+            .style("left", (d3.event.pageX) + "px")
+            .style("top", (d3.event.pageY - 50) + "px");
+             d3.select(this).style('fill-opacity' , 1)
+             var id = d3.select(this).datum().id
+             d3.selectAll(".bar").filter(function(d){ return d.fips == id}).classed("hover", true)
+          }
+          
+      }
+  function mouseout(){
+          tooltip.transition()
+            .duration(500)
+            .style("opacity", 0);
+            d3.select(this).style('fill-opacity' , .7)
+            var id = d3.select(this).datum().id
+            d3.selectAll(".bar").filter(function(d){ return d.fips == id}).classed("hover", false)
+      }
+      
+      
+      var a = countyvote.map(function(d){ return({state: d.state, county: d.county, fips: d.fips, candidate:d.candidate, votes:d.votes} )})
+     
+  
+      
+      var expensesAvgAmount = d3.nest()
+  .key(function(d) { return d.fips; })
+  
+  .map(a);
+  a= 1001
+  var d = expensesAvgAmount[a]
+  
+  
+  var i;
+ 
+  
+      svg.append("g")
+      .attr("class", "counties")
+    .selectAll("path")
+             
+      .data(topojson.feature(usstates, usstates.objects.counties).features)
+    .enter().append("path")
+    .attr("d", path)
+    .style("fill", function(d){
+         var a = expensesAvgAmount[d.id] 
+        //var a = result[d.id]; 
+        if (a == undefined){return "#ffffff";} else { var c = a[0].candidate; return color1(c)}})
+        
+        .on("mouseover", mouseover)
+        .on("mousemove", mousemove)
+        .on("mouseout", mouseout);
+        
+        
+        var legend = svg.selectAll(".legend")
+    .data(["Donald Trump", "Hillary Clinton" , "Ted Cruz", "Bernie Sanders", "John Kasich" ])
+    .enter().append("g")
+    .attr("class", "legend")
+    .attr("transform", function(d, i) {
+      return "translate(0," + (height - 40 - 20 * i) + ")";
+    });
+  legend.append("rect")
+    .attr("x", width - 46)
+    .attr("width", 16)
+    .attr("height", 16)
+    .style("fill", color1)
+  legend.append("text")
+    .attr("x", width-50 )
+    .attr("y", 13)
+    .attr("text-anchor", "end")
+    .text(function(d) {
+      return d;
+    })
+   
+  
+  } 
+  
+    
+       
+   function processdata(error, usstates, countyvote)
+ {
+     createmap(usstates,countyvote)
+     
+    
+ }    
+       
+    queue()
+    .defer(d3.json,"https://gist.githubusercontent.com/dkrathi457/968ded0a926dfebd17f5c028cd30becb/raw/6a56c5ac1e9321ecff38bff2071e63fd6f84f9f7/us.json")
+    .defer(d3.json,"https://gist.githubusercontent.com/anonymous/0a97a2ec32faa733aa0c0ffd9b1b9fc9/raw/c48a7ce5541fede9ee96272c446eefe656bd48c4/maxvotecounty.json")
+    
+    .await(processdata)   
+   </script>
+  
+  <script>
+         var margin  = {top:20, right:100, bottom:20, left:20};
+         var width1 = 350 - margin.left - margin.right;
+         var height1 = 200 - margin.top - margin.bottom;
+         
+         var color  = d3.scale.category20()
+         var x = d3.scale.ordinal()
+                    .rangeRoundBands([0,width1], .1);
+                    
+         var y = d3.scale.linear()
+                    .range([height1-40,0]);
+                    
+          var xAxis = d3.svg.axis()
+                        .scale(x)
+                        .orient("bottom");
+          var yAxis = d3.svg.axis()
+                        .scale(y)
+                        .ticks(12)
+                        .orient("left")
+                        
+                        
+          var tip = d3.tip()
+             .attr('class', 'd3-tip')
+             
+             .html(function(d) {
+                 return "<strong>" + d.county + "\t" + d.candidate + "\t" +d.state + "</strong><br/>" + d.fraction_votes ;
+                 })
+                        
+          
+          d3.csv("https://gist.githubusercontent.com/dkrathi457/37fd7f1623f8c70a3ab69bc571c6bb4d/raw/8d090d1d4bb1c40cf1d08722f06e0d758d1621b0/maxvotecounty.csv", function(data) {
+    
+    http://bl.ocks.org/officeofjane/7315455
+        
+        var states = d3.nest()
+      .key(function(d) { return d.state; })
+      .entries(data);
+        console.log(states)
+        
+        var states1 = d3.nest()
+      
+      .key(function(d) { return d.candidate; })
+      .key(function(d){ return d.state;})
+      .entries(data);
+        console.log(states1)
+        
+        x.domain(data.map(function(d){ return ((d.candidate).split(" ").pop())}))
+      
+        y.domain(d3.extent(states.map(function (item) {
+        return (item.values[0].fraction_votes);
+   })))
+          
+       
+      var svg = d3.select("#vis").selectAll("svg")
+    .data(states)
+    .enter()
+    .append("svg:svg")
+    .attr("width", width1 + margin.left + margin.right)
+    .attr("height", height1 + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+  svg.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height1 + ")")
+      .call(xAxis);
+svg.append("g")
+       .attr("class", "y axis")
+       .attr("transform", "translate(4,0)")
+       .call(yAxis)
+    .append("text")
+    .attr("x", width1 + 10)
+    .attr("y", height1/3)
+    .attr("dy", ".71em")
+    .attr("text-anchor", "start")
+    .attr("font-size", "1.1em")
+    .text(function(d) { return d.key});
+    
+    svg.selectAll(".bar")
+      .data(function(d) {return d.values;})
+      .enter()
+      .append("circle")
+      .attr("class", "bar")
+      .attr("cx", function(d) { return x(((d.candidate).split(" ").pop()))+18; })
+      .attr("cy", function(d) { return y(d.fraction_votes); })
+      .attr("r", 5)
+      .attr("fill", "None")
+      .attr("stroke", function(d){ return color(d.fraction_votes)})
+      .on('mouseover', tip.show)
+      .on('mouseout', tip.hide)
+      svg.call(tip);
+      
+       });
+    </script>   
+
+               
+   
+   </body>
+   </html>

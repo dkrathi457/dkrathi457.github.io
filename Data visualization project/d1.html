@@ -1,0 +1,1046 @@
+<html>
+<head>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/queue-async/1.0.7/queue.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.19/topojson.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.20/topojson.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.6.1/lodash.min.js"></script>
+   <script src = "https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js" ></script>
+	<script src = "https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.7.1/d3-tip.js"></script>
+   <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+   
+   
+   <style>
+       
+       select {
+  margin: 10px;
+  border: 1px solid #111;
+  background: transparent;
+  width: 170px;
+  padding: 5px 35px 5px 5px;
+  font-size: 12px;
+  border: 1px solid #ccc;
+  height: 24px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  
+}
+       @import url(http://fonts.googleapis.com/css?family=Roboto:400,500,700|Arimo:400,700);
+       header {
+           font-family: 'Arimo', sans-serif;
+       }
+       .dot {
+  stroke: #000;
+}
+       h1,h2,h3,h4,h5,p {
+           color: black;
+           font-family: 'Arimo', sans-serif; 
+           }
+       #TOC ul {
+           list-style: none;
+           padding-left: 2px;
+           }
+       path {
+           stroke: black;
+           stroke-width: 1px;
+           fill: none;
+           }
+      .axis path,
+      .axis line {
+          fill: none;
+          stroke: black;
+          shape-rendering: crispEdges;
+          }
+          .hover123{
+              fill: green;
+          }
+          .axis text {
+              font-family: sans-serif;
+              font-size: 11px;
+              }
+                
+          .aaxxis text{
+              font-family: sans-serif;
+              font-size: 11px;
+              }
+                
+              .aaxxis path,
+              .aaxxis line {
+                  fill: none;
+                  stroke: black;
+                 }
+              .nav ul {
+                                    
+                  list-style: none;
+                  background-color: #444;
+                  text-align: left;
+                  padding: 0;
+                  margin: 0;
+                  
+              }
+              .nav li {
+                  font-family: 'Oswald', sans-serif;
+                  font-size: 1.2em;
+                  line-height: 20px;
+                  height: 40px;
+                  border-bottom: 1px solid #888;
+              }
+             .nav a {
+                 text-decoration: none;
+                 color: #fff;
+                 display: block;
+                 transition: .3s background-color;
+             }
+             .nav a:hover {
+                 background-color: #005f5f;
+             }
+             .nav a.active {
+                 background-color: #fff;
+                 color: #444;
+                 cursor: default;
+             }
+            .nav li {
+                width: 150px;
+                border-bottom: none;
+                height: 30px;
+                line-height: 30px;
+                font-size: 1.2em;
+                }
+            .nav li {
+                display: inline-block;
+                margin-right: -4px;
+                }
+             #main_wrap {
+                 display: table;
+             }
+             #sidebar {
+                  background:white;
+                  min-width: 200px;
+                  display: table-cell;
+             }
+             #content {
+                 background:white;
+                 display: table-cell;
+                 width: 100%;
+                 }
+                 
+             .YlGn  { fill:rgb(247,251,255); }
+             .YlGn  { fill:rgb(222,235,247); }
+             .YlGn  { fill:rgb(198,219,239); }
+             .YlGn  { fill:rgb(158,202,225); }
+             .YlGn  { fill:rgb(107,174,214); }
+             .YlGn  { fill:rgb(66,146,198); }
+             .YlGn  { fill:rgb(33,113,181); }
+             .YlGn  { fill:rgb(8,81,156); }
+             .YlGn  { fill:rgb(8,48,107); }
+             
+             .YlGn .q0-5 { fill: rgb(255, 255, 204) ;}
+             .YlGn .q1-5 {  fill: rgb(194, 230, 153);}
+             .YlGn .q2-5 {  fill: rgb(120, 198, 121);}
+             .YlGn .q3-5 {  fill: rgb(49, 163, 84);}
+             .YlGn .q4-5 {  fill: rgb(0, 104, 55);}
+             
+            #abc {
+                position: fixed;
+                style:"float:left";
+                width: 60%;
+                
+          
+             }
+             
+             .tooltip {
+  position: absolute;
+  width: 200px;
+  height: 28px;
+  pointer-events: none;
+                  
+                           
+      </style>
+      </head>
+    
+      <body>
+           
+      <header>
+    <div class="nav">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="d2.html">Design 1</a></li>
+        <li><a href="d1.html">Design 2</a></li>
+        
+      </ul>
+    </div>
+  </header>
+    
+          
+ <div id="abc", width:60%>
+          
+          <select id = "opts", focus>
+<option value='Donald Trump'>Donald Trump</option>
+<option value='Ted Cruz'' selected="selected">Ted Cruz</option> 
+<option value='Bernie Sanders'>Bernie Sanders</option>
+<option value="Hillary Clinton">Hillary Clinton</option>
+<option value="John Kasich">John Kasich</option>
+<option value="Marco Rubio">Marco Rubio</option>
+  
+  </select>   
+ 
+  <div id="d1"> </div>
+  <div id="d2"> </div>
+  <br>
+  </div>
+  <div style="float:Right", width:40%>
+      
+  <div id="design3">
+      <div> <p> <h5>No of Visits VS No of Counties Won by Candidate </h5> </p></div>
+  </div>
+  
+  <div id="design4">
+      <div> <p> <h5> Candidate Performance(Avg: Fraction_Votes) VS % Percentage of People Age is above 65  </h5> </p> </div>
+  </div>
+  
+  <div id="design5">
+      <div> <p> <h5> Candidate Performance(Avg: Fraction_Votes) VS % Percentage of White Residants </h5> </p> </div>
+  </div>
+  
+  <div id="design6">
+      <div> <p>  <h5> Candidate Performance(Avg: Fraction_Votes) VS % Percentage of Graduates </h5> </p> </div>
+  </div>
+  
+  
+  <div id="design7">
+      <div> <p> <h5> Candidate Performance(Avg: Fraction_Votes) VS % Percentage of People Below Poverty </h5>  </p> </div>
+  </div>
+  
+  <div id="design8"></div>
+  </div>
+  <section class="main-content"></section>
+  
+  <script>
+  var width  = 600;
+  var height =  300;
+  var margin = { top: 20, right: 20, bottom:40, left: 40}
+  var width1 = 600 - margin.left  - margin.right;
+  var height1 = 400 - margin.top - margin.bottom;
+  var tooltip = d3.select("section").append("div")
+    .attr("class", "tooltip")
+    .style("opacity", 0);
+  
+  
+  var projection = d3.geo.albersUsa()
+   .scale(450)
+   .translate([width / 2, height / 2]);
+var path = d3.geo.path()
+    .projection(projection);
+    
+    var x = d3.scale.linear()
+    .range([0, width]);
+var y = d3.scale.linear()
+    .range([height, 0]);
+    
+    var agey = d3.scale.linear().range([height, 0])
+    var agex = d3.scale.linear().range([0,width])
+    
+    var whitey = d3.scale.linear().range([height, 0])
+    var whitex = d3.scale.linear().range([0,width])
+    
+    var bachy = d3.scale.linear().range([height, 0])
+    var bachx = d3.scale.linear().range([0,width])
+    
+    var highy = d3.scale.linear().range([height, 0])
+    var highx = d3.scale.linear().range([0,width])
+    
+    var povertyy = d3.scale.linear().range([height, 0])
+    var povertyx = d3.scale.linear().range([0,width])
+    
+    var svg3 = d3.select(d1).append("svg")
+    .attr("width", width)
+    .attr("height", height);
+    var svg4 = d3.select(d2).append("svg")
+    .attr("width", width)
+    .attr("height", height);
+    
+    var svg5 = d3.select(design3).append("svg")
+         .attr("width",  width + margin.left + margin.right)
+         .attr("height", height + margin.top + margin.bottom)
+         .append("g")
+         .attr("transform", "translate(" +margin.left + "," + margin.top + ")");
+         
+var svg6 = d3.select(design4).append("svg")
+         .attr("width",  width + margin.left + margin.right)
+         .attr("height", height + margin.top + margin.bottom)
+         .append("g")
+         .attr("transform", "translate(" +margin.left + "," + margin.top + ")");
+    
+var svg7 = d3.select(design5).append("svg")
+         .attr("width",  width + margin.left + margin.right)
+         .attr("height", height + margin.top + margin.bottom)
+         .append("g")
+         .attr("transform", "translate(" +margin.left + "," + margin.top + ")");
+var svg8 = d3.select(design6).append("svg")
+         .attr("width",  width + margin.left + margin.right)
+         .attr("height", height + margin.top + margin.bottom)
+         .append("g")
+         .attr("transform", "translate(" +margin.left + "," + margin.top + ")");
+var svg9 = d3.select(design7).append("svg")
+         .attr("width",  width + margin.left + margin.right)
+         .attr("height", height + margin.top + margin.bottom)
+         .append("g")
+         .attr("transform", "translate(" +margin.left + "," + margin.top + ")");
+         
+         
+    
+    
+    function createmap(usstates, trips,simi, tripcount, statename, maxvote, countyfacts) {
+   
+   //This code for number of votes recieved
+   var statevotebycandidate = d3.nest()
+  .key(function(d) { return d.candidate; })
+  .key(function(d) { return d.state; })
+  //.key(function(d) { return d.fips; })
+  .rollup(function(v) { return d3.sum(v, function(d) { return d.votes; }); })
+  .map(trips);
+  
+  
+  var fractionvotemean = d3.nest()
+  .key(function(d) { return d.candidate; })
+  .key(function(d) { return d.state; })
+  //.key(function(d) { return d.fips; })
+  .rollup(function(v) { return d3.mean(v, function(d) { return (d.fraction_votes)*100; }); })
+  .map(trips);
+  
+  
+  //console.log(fractionvotemean)
+  
+  
+   var countymaxvote = d3.nest()
+  .key(function(d) { return d.candidate; })
+  .key(function(d) { return d.state; })
+  //.key(function(d) { return d.fips; })
+  .rollup(function(v) { return v.length })
+  .map(maxvote);
+  
+  console.log(countyfacts)
+  
+  var age65= [];
+  var white = [];
+  var bachelors = [];
+  var highschool = [];
+  var povertylevel = []; 
+  
+  
+  
+  countyfacts.map(function(d){
+      age65.push({state: d.State, age: d.Age})
+      white.push({state: d.State, white: d.White})
+      bachelors.push({state: d.State, bachelors: d.Bachelors})
+      highschool.push({state: d.State, highschool: d.HighSchool})
+      povertylevel.push({state: d.State, povertylevel: d.Povertylevel})
+  })
+   
+  //console.log(whit.length)
+  var age_65 = {};
+  var whi_te = {};
+  var bach = {};
+  var h_school = {};
+  var poverty_l = {}
+ for (var i=0; i<age65.length; i++) {
+  age_65[age65[i].state] = age65[i].age;
+  whi_te[white[i].state] = white[i].white;
+  bach[bachelors[i].state] = bachelors[i].bachelors;
+  h_school[highschool[i].state] = highschool[i].highschool;
+  poverty_l[povertylevel[i].state] = povertylevel[i].povertylevel;
+  
+}     
+console.log(poverty_l)
+   
+var  color1 = d3.scale.linear()
+      .range(["rgb(247,251,255)", "rgb(8,48,107)"])
+      .interpolate(d3.interpolateHcl);
+ 
+var map1 = svg3.append("g")
+     .selectAll("path")
+     .data(simi.features)
+     .enter()
+     .append("path")
+     .attr("d",path)
+     .attr("class", "county");
+// ANother map
+var  color2 = d3.scale.linear()
+      .range(["rgb(255, 255, 204)","rgb(0, 104, 55)"])
+      //.range(["rgb(247,251,255)", "rgb(8,48,107)"])
+      .interpolate(d3.interpolateHcl);
+ 
+var map2 = svg4.append("g")
+     .selectAll("path")
+     .data(simi.features)
+     .enter()
+     .append("path")
+     .attr("d",path)
+     .attr("class", "county");
+     
+ var legendSize = 200;
+     var numlevels = 200;
+     var legend = svg3.append("g").attr("class", "YlGn");
+     var levels = legend.selectAll("levels")
+     .data(d3.range(numlevels))
+     .enter().append("rect")
+     .attr("x", function(d) {
+         return width - legendSize - 10 + d * legendSize / numlevels;
+    })
+    .attr("y", height -20)
+    .attr("width", legendSize / numlevels)
+    .attr("height", 16)
+    .style("stroke", 1)
+    .style("fill", "none")
+    
+    var d = legend.append("text")
+    .attr("x", width - legendSize - 20)
+    .attr("y", height - 25)
+    .attr("text-anchor", "middle")
+    //.text(0)
+    legend.append("text")
+    .attr("x", width - legendSize / 2 - 20)
+    .attr("y", height - 30)
+    .attr("text-anchor", "middle")
+    .text("Most Visited States")
+    var z=  legend.append("text")
+    .attr("x", width - 10)
+    .attr("y", height - 20)
+    .attr("text-anchor", "middle")
+    
+    
+    //second map legends
+    
+    var legendSize = 200;
+     var numlevels = 200;
+     var legend1 = svg4.append("g").attr("class", "YlGn");
+     var levels1 = legend1.selectAll("levels1")
+     .data(d3.range(numlevels))
+     .enter().append("rect")
+     .attr("x", function(d) {
+         return width - legendSize - 10 + d * legendSize / numlevels;
+    })
+    .attr("y", height -20)
+    .attr("width", legendSize / numlevels)
+    .attr("height", 16)
+    .style("stroke", 1)
+    .style("fill", "none")
+    
+     var d1 = legend1.append("text")
+    .attr("x", width - legendSize - 20)
+    .attr("y", height - 20)
+    .attr("text-anchor", "middle")
+    //.text(0)
+    legend1.append("text")
+    .attr("x", width - legendSize / 2 - 20)
+    .attr("y", height - 35)
+    .attr("text-anchor", "middle")
+    .text("Number of Counties Won")
+    var z1=  legend1.append("text")
+    .attr("x", width - 20)
+    .attr("y", height - 25)
+    .attr("text-anchor", "middle")
+ 
+     var scatteraxis = svg5.append("g")
+    .attr("class", "axis")
+    .attr("transform", "translate(0, "+(height)+")")
+    
+     var scatteraxis2 = svg5.append("g")
+    .attr("class", "axis")
+    
+    
+    var ageaxis = svg6.append("g")
+    .attr("class", "axis")
+    
+     var ageaxis2 = svg6.append("g")
+    .attr("class", "axis")
+    
+    var whiteaxis = svg7.append("g")
+    .attr("class", "axis")
+    
+     var whiteaxis2 = svg7.append("g")
+    .attr("class", "axis")
+    
+    /*var latinoaxis = svg8.append("g")
+    .attr("class", "axis")
+    
+     var latinoaxis2 = svg8.append("g")
+    .attr("class", "axis") */
+    
+    var bachaxis = svg8.append("g")
+    .attr("class", "axis")
+    
+     var bachaxis2 = svg8.append("g")
+    .attr("class", "axis")
+    
+    var povertyaxis = svg9.append("g")
+    .attr("class", "axis")
+    
+     var povertyaxis2 = svg9.append("g")
+    .attr("class", "axis")
+    
+    
+    
+//
+function colormap(donaldstatevisit, donaldvotes,scatterplot, ageplot, whiteplot, bachplot,h_schoolplot,poverty_lplot , newData) {
+    console.log(newData)
+    var data = d3.nest()
+  .key(function(d) { return d.state; })
+  .map(scatterplot)
+  
+  console.log(data)
+     //console.log(scatterplot)
+     //console.log(latinoplot)
+     //console.log(donaldvotes)
+     var min = d3.min(donaldstatevisit, function(d) { return d.count; })
+     var max = d3.max(donaldstatevisit, function(d) { return d.count; })
+     color1.domain([min,max])
+     
+     var min1 = d3.min(donaldvotes, function(d) { return d.vote; })
+     var max1 = d3.max(donaldvotes, function(d) { return d.vote; })
+     color2.domain([min1,max1])
+     
+     var min2 = d3.min(scatterplot, function(d) { return d.vote})
+     var max2 = d3.max(scatterplot, function(d){ return d.vote})
+     console.log(max2)
+     x.domain([min2,max2])
+     var min3 = d3.min(scatterplot, function(d) { return d.visits})
+     var max3 = d3.max(scatterplot, function(d){ return d.visits})
+     y.domain([min3, max3])
+     var color = d3.scale.category20();
+    
+    var agemin = d3.min(ageplot, function(d) { return parseInt(d.visits); })
+     var agemax = d3.max(ageplot, function(d) { return parseInt(d.visits); })
+     agey.domain([agemin,agemax])
+    var agevmin = d3.min(ageplot, function(d) { return parseInt(d.vote); })
+     var agevmax = d3.max(ageplot, function(d) { return parseInt(d.vote); })
+     agex.domain([agevmin,agevmax])
+    
+    var whitemin = d3.min(whiteplot, function(d) { return parseInt(d.visits); })
+     var whitemax = d3.max(whiteplot, function(d) { return parseInt(d.visits); })
+     whitey.domain([whitemin,whitemax])
+    var whitevmin = d3.min(whiteplot, function(d) { return parseInt(d.vote); })
+     var whitevmax = d3.max(whiteplot, function(d) { return parseInt(d.vote); })
+     whitex.domain([whitevmin,whitevmax])
+    
+    var povertymin = d3.min(poverty_lplot, function(d) { return parseInt(d.visits); })
+     var povertymax = d3.max(poverty_lplot, function(d) { return parseInt(d.visits); })
+     povertyy.domain([povertymin,povertymax])
+    var povertyvmin = d3.min(poverty_lplot, function(d) { return parseInt(d.vote); })
+     var povertyvmax = d3.max(poverty_lplot, function(d) { return parseInt(d.vote); })
+     povertyx.domain([povertyvmin,povertyvmax])
+    
+           
+     var bachmin = d3.min(bachplot, function(d) { return parseInt(d.visits); })
+     var bachmax = d3.max(bachplot, function(d) { return parseInt(d.visits); })
+     bachy.domain([bachmin,bachmax])
+    var bachvmin = d3.min(bachplot, function(d) { return parseInt(d.vote); })
+     var bachvmax = d3.max(bachplot, function(d) { return parseInt(d.vote); })
+     bachx.domain([bachvmin,bachvmax])
+    
+     
+     //Map 1 Color and legends
+     map1.style("fill", function(d, i) {
+         
+         var a = donaldstatevisit[i].count
+         console.log(a);
+         if (a == undefined){return "#ffffff";} else {return color1(a)}})
+                                           
+                   
+                  .on("mouseenter", function(d){ d3.select(this).classed("hover123", true);
+                  tooltip.transition()
+               .duration(200)
+               .style("opacity", 1);
+          tooltip.html(d.properties.name + ":" + data[d.properties.name][0].visits)
+               .style("left", (d3.event.pageX ) + "px")
+               .style("top", (d3.event.pageY - 50) + "px");
+       
+        var state = d3.select(this).datum().properties.name
+        d3.selectAll(".dot").filter(function(d){ return d.state == state}).classed("hover123", true)
+                  })
+                  .on("mouseout", function(d){ d3.select(this).classed("hover123", true);
+                  tooltip.transition()
+            .duration(500)
+            .style("opacity", 0);
+        var state = d3.select(this).datum().properties.name
+        d3.selectAll(".dot").filter(function(d){ return d.state == state}).classed("hover123", false)
+                  })
+    levels.style("fill", function(d) {
+      return color1(min * (legendSize - d) / legendSize +
+        max * d / legendSize);
+    })
+    
+    
+    
+    d.text(min)
+    z.text(max)
+    
+     // Map 2 Color and legends             
+     map2.style("fill", function(d,i) {
+         
+                var  a = donaldvotes[i].vote
+                if (a == undefined){return "#ffffff";} else {return color2(a)}})
+        .on("mouseenter", function(d){ 
+        
+            tooltip.transition()
+               .duration(200)
+               .style("opacity", 1);
+          tooltip.html(d.properties.name + ":" + data[d.properties.name][0].vote)
+               .style("left", (d3.event.pageX ) + "px")
+               .style("top", (d3.event.pageY - 50) + "px");
+       
+          
+    
+        var state = d3.select(this).datum().properties.name
+        d3.selectAll(".dot").filter(function(d){ return d.state == state}).classed("hover123", true)
+        
+        
+        })
+         .on("mouseout", function(d){ d3.select(this).classed("hover123", true);
+         tooltip.transition()
+            .duration(500)
+            .style("opacity", 0);
+        var state = d3.select(this).datum().properties.name
+        d3.selectAll(".dot").filter(function(d){ return d.state == state}).classed("hover123", false)
+                 
+                 
+        });
+     
+    levels1.style("fill", function(d) {
+      return color2(min1 * (legendSize - d) / legendSize +
+        max1 * d / legendSize);
+    })
+    z1.text(max1)
+    d1.text(min1)
+    var xAxis = d3.svg.axis().scale(x).orient("bottom")
+        .ticks(15)
+    
+     yAxis = d3.svg.axis().scale(y).orient("left")
+        .ticks(15)
+        
+    var agexAxis = d3.svg.axis().scale(agex).orient("bottom")
+        .ticks(15)
+    
+    
+     var ageyAxis = d3.svg.axis().scale(agey).orient("left")
+        .ticks(10)
+        
+    var whitexAxis = d3.svg.axis().scale(whitex).orient("bottom")
+        .ticks(15)
+    
+     var whiteyAxis = d3.svg.axis().scale(whitey).orient("left")
+        .ticks(10)
+    
+    
+    var bachxAxis = d3.svg.axis().scale(bachx).orient("bottom")
+        .ticks(15)
+    
+     var bachyAxis = d3.svg.axis().scale(bachy).orient("left")
+        .ticks(10)
+    
+    
+    var povertyxAxis = d3.svg.axis().scale(povertyx).orient("bottom")
+        .ticks(15)
+    
+     var povertyyAxis = d3.svg.axis().scale(povertyy).orient("left")
+        .ticks(10)
+    
+    
+    scatteraxis.call(xAxis)
+    
+    .append("text")
+            .attr("text-anchor", "middle")  
+            .attr("transform", "translate(300,28)")  
+            .text("# of Counties Won by Candidate ");
+ 
+scatteraxis2.call(yAxis).append("text")
+      .attr("transform", "rotate(270)")
+      .attr("x" , -125)
+      .attr("y", -30)
+      .attr("dy", ".9em")
+      .style("text-anchor", "end")
+      .text("Number of Visits"); 
+        
+    var dot1 =svg5.selectAll(".dot")
+        .data(scatterplot);
+        
+        var abc =dot1.enter()
+        .append("circle")
+        .attr("class", "dot")
+        .attr("cx", function(d){ return x(d.vote)})
+        .attr("cy", function(d){ return y(d.visits)})
+        .on("mousemove", function(d) {
+            tooltip.transition()
+               .duration(200)
+               .style("opacity", .9);
+          tooltip.html(d.state + "<br/> (" + d.visits 
+	        + ", " + d.vote + ")")
+               .style("left", (d3.event.pageX ) + "px")
+               .style("top", (d3.event.pageY - 50) + "px");
+      }) 
+      .on("mouseout", function(d) {
+          tooltip.transition()
+               .duration(500)
+               .style("opacity", 0);
+      });
+    
+        
+    
+    
+  
+     
+        
+        dot1
+        .transition()
+	    	.duration(1000)
+         .attr("cx", function(d){ return x(d.vote)})
+        .attr("cy", function(d){ return y(d.visits)})
+        .attr("r", 10)
+        .attr("fill", function(d){ return color(d.state)})
+        
+        .attr("x", function(d){ return x(d.vote)})
+        .attr("y", function(d){ return y(d.visits)})
+        .text(function(d){ return d.state})
+        
+        
+        
+        
+        dot1.exit().remove();
+        
+    var dot2 =svg6.selectAll(".dot")
+        .data(ageplot);
+        
+        dot2.enter()
+        .append("circle")
+        .attr("class", "dot")
+        .attr("cx", function(d){ return agex(parseInt(d.vote))})
+        .attr("cy", function(d){ return agey(parseInt(d.visits))})
+        .on("mousemove", function(d) {
+            tooltip.transition()
+               .duration(200)
+               .style("opacity", .9);
+          tooltip.html(d.state + "<br/> (" + d.visits 
+	        + ", " + ((d.vote).toFixed(2)) + ")")
+               .style("left", (d3.event.pageX ) + "px")
+               .style("top", (d3.event.pageY - 50) + "px");
+      }) 
+      .on("mouseout", function(d) {
+          tooltip.transition()
+               .duration(500)
+               .style("opacity", 0);
+      });
+    
+        
+    var ageax= ageaxis.attr("transform", "translate(0, "+(height+10)+")")
+    .call(agexAxis)
+    
+    .append("text")
+            .attr("text-anchor", "middle")  
+            .attr("transform", "translate(300,28)")  
+            .text("Avg: Fraction Vote Recieved in Each State ");
+ 
+ageaxis2.call(ageyAxis).attr("transform", "translate(-10,0)").append("text")
+      .attr("transform", "rotate(270)")
+      .attr("x" , -115)
+      .attr("y", -30)
+      .attr("dy", ".9em")
+      .style("text-anchor", "end")
+      .text("% of People >= 65"); 
+    
+    dot2
+        .transition()
+	    	.duration(1000)
+         .attr("cx", function(d){ return agex(parseInt(d.vote))})
+        .attr("cy", function(d){ return agey(parseInt(d.visits))})
+        .attr("r", 10)
+        .attr("fill", function(d){ return color(d.state)})
+        
+        .attr("x", function(d){ return agex(parseInt(d.vote))})
+        .attr("y", function(d){ return agey(parseInt(d.visits))})
+        .text(function(d){ return d.state})
+        
+        
+        dot2.exit().remove();
+        
+  
+    var dot3 =svg7.selectAll(".dot")
+        .data(whiteplot);
+        
+        dot3.enter()
+        .append("circle")
+        .attr("class", "dot")
+        .attr("cx", function(d){ return whitex(parseInt(d.vote))})
+        .attr("cy", function(d){ return whitey(parseInt(d.visits))})
+        .on("mousemove", function(d) {
+            tooltip.transition()
+               .duration(200)
+               .style("opacity", .9);
+          tooltip.html(d.state + "<br/> (" + d.visits 
+	        + ", " + ((d.vote).toFixed(2)) + ")")
+               .style("left", (d3.event.pageX ) + "px")
+               .style("top", (d3.event.pageY - 50) + "px");
+      }) 
+      .on("mouseout", function(d) {
+          tooltip.transition()
+               .duration(500)
+               .style("opacity", 0);
+      });
+        
+    whiteaxis.attr("transform", "translate(0, "+(height+10)+")")
+    .call(whitexAxis)
+    .append("text")
+            .attr("text-anchor", "middle")  
+            .attr("transform", "translate(300,28)")  
+            .text("Avg: Fraction Vote Recieved in Each State ");
+ 
+whiteaxis2.call(whiteyAxis).attr("transform", "translate(-10,0)").append("text")
+      .attr("transform", "rotate(270)")
+      .attr("x" , -120)
+      .attr("y", -32)
+      .attr("dy", ".9em")
+      .style("text-anchor", "end")
+      .text("% of White")
+    
+    dot3
+        .transition()
+	    	.duration(1000)
+         .attr("cx", function(d){ return whitex(parseInt(d.vote))})
+        .attr("cy", function(d){ return whitey(parseInt(d.visits))})
+        .attr("r", 10)
+        .attr("fill", function(d){ return color(d.state)})
+        
+        
+        .attr("x", function(d){ return whitex(parseInt(d.vote))})
+        .attr("y", function(d){ return whitey(parseInt(d.visits))})
+        .text(function(d){ return d.state})
+        
+        
+        dot3.exit().remove();      
+    
+    
+    var dot4 =svg8.selectAll(".dot")
+        .data(bachplot);
+        
+        dot4.enter()
+        .append("circle")
+        .attr("class", "dot")
+        .attr("cx", function(d){ return bachx(parseInt(d.vote))})
+        .attr("cy", function(d){ return bachy(parseInt(d.visits))})
+        .on("mousemove", function(d) {
+            tooltip.transition()
+               .duration(200)
+               .style("opacity", .9);
+          tooltip.html(d.state + "<br/> (" + d.visits 
+	        + ", " + ((d.vote).toFixed(2)) + ")")
+               .style("left", (d3.event.pageX ) + "px")
+               .style("top", (d3.event.pageY - 50) + "px");
+      }) 
+      .on("mouseout", function(d) {
+          tooltip.transition()
+               .duration(500)
+               .style("opacity", 0);
+      });
+        
+    bachaxis.attr("transform", "translate(0, "+(height+10)+")")
+    .call(bachxAxis)
+    .append("text")
+            .attr("text-anchor", "middle")  
+            .attr("transform", "translate(300,28)")  
+            .text("Avg: Fraction Vote Recieved in Each State ");
+ 
+bachaxis2.call(bachyAxis).attr("transform", "translate(-10,0)").append("text")
+      .attr("transform", "rotate(270)")
+      .attr("x" , -115)
+      .attr("y", -30)
+      .attr("dy", ".9em")
+      .style("text-anchor", "end")
+      .text("% of Graduates")
+    
+    dot4
+        .transition()
+	    	.duration(1000)
+         .attr("cx", function(d){ return bachx(parseInt(d.vote))})
+        .attr("cy", function(d){ return bachy(parseInt(d.visits))})
+        .attr("r", 10)
+        .attr("fill", function(d){ return color(d.state)})
+        
+        .attr("x", function(d){ return bachx(parseInt(d.vote))})
+        .attr("y", function(d){ return bachy(parseInt(d.visits))})
+        .text(function(d){ return d.state})
+        
+        
+        dot4.exit().remove();      
+        
+      
+   
+    var dot5 =svg9.selectAll(".dot")
+        .data(poverty_lplot);
+        
+        dot5.enter()
+        .append("circle")
+        .attr("class", "dot")
+        .attr("cx", function(d){ return povertyx(parseInt(d.vote))})
+        .attr("cy", function(d){ return povertyy(parseInt(d.visits))})
+        .on("mousemove", function(d) {
+            tooltip.transition()
+               .duration(200)
+               .style("opacity", .9);
+          tooltip.html(d.state + "<br/> (" + d.visits 
+	        + ", " + ((d.vote).toFixed(2)) + ")")
+               .style("left", (d3.event.pageX ) + "px")
+               .style("top", (d3.event.pageY - 50) + "px");
+      }) 
+      .on("mouseout", function(d) {
+          tooltip.transition()
+               .duration(500)
+               .style("opacity", 0);
+      });
+        
+    povertyaxis.attr("transform", "translate(0, "+(height+10)+")")
+    .call(povertyxAxis)
+    .append("text")
+            .attr("text-anchor", "middle")  
+            .attr("transform", "translate(300,28)")  
+            .text("Avg: Fraction Vote Recieved in Each State ");
+ 
+povertyaxis2.call(povertyyAxis).attr("transform", "translate(-10,0)").append("text")
+      .attr("transform", "rotate(270)")
+      .attr("x" , -115)
+      .attr("y", -30)
+      .attr("dy", ".9em")
+      .style("text-anchor", "end")
+      .text("% of People Below Poverty Level")
+    
+    dot5
+        .transition()
+	    	.duration(1000)
+         .attr("cx", function(d){ return povertyx(parseInt(d.vote))})
+        .attr("cy", function(d){ return povertyy(parseInt(d.visits))})
+        .attr("r", 10)
+        .attr("fill", function(d){ return color(d.state)})
+        
+        .attr("x", function(d){ return povertyx(parseInt(d.vote))})
+        .attr("y", function(d){ return povertyy(parseInt(d.visits))})
+        .text(function(d){ return d.state})
+        
+        
+        dot5.exit().remove();      
+           
+   
+    
+}
+d3.select('#opts')
+  .on('change', function() {
+ var newData = (d3.select(this).property('value'));
+ // Number of visits made by each candidate to each state
+ var statelookup = {}
+ var stateresults = []
+       
+    for(i =0 ; i< tripcount.results.length; i++)
+ {
+     if(tripcount.results[i].candidate == newData)
+     {
+         var state = tripcount.results[i].state
+         if(!(state in statelookup))
+         {
+             statelookup[state] =1
+             stateresults.push({state: state})
+         }
+         else{
+             statelookup[state]+=1
+         }
+     }
+ }
+ var donaldstatevisit = []
+for(i =0 ;  i< statename.length; i++)
+{
+    donaldstatevisit.push({state: statename[i].State, count:statelookup[statename[i].Abbreviation]})
+}
+//THis code is for another graph
+donaldvote = countymaxvote[newData]
+donaldfractionvote = fractionvotemean[newData]
+var donaldvotes = [];
+for(i =0 ;  i< statename.length; i++)
+{
+    donaldvotes.push({state: statename[i].State, vote:donaldvote[statename[i].State]})
+    
+}
+ 
+var donaldfvotes = [];
+for(i =0 ;  i< statename.length; i++)
+{
+    donaldfvotes.push({state: statename[i].State, vote:donaldfractionvote[statename[i].State]})
+}
+  
+ console.log(donaldvotes)
+  
+  for(i=0; i<donaldfvotes.length; i++)
+{
+    if(donaldfvotes[i].vote == undefined)
+    {
+        donaldfvotes[i].vote = 0;
+    }
+}
+var scatterplot = [];
+for(i = 0; i < statename.length; i++ )
+{
+    scatterplot.push({state: statename[i].State, vote:donaldvote[statename[i].State], visits : statelookup[statename[i].Abbreviation]})
+}  
+console.log(scatterplot)
+ for(i=0; i<scatterplot.length; i++)
+{
+    if(scatterplot[i].vote == undefined)
+    {
+        scatterplot[i].vote = 0;
+    }
+    if(scatterplot[i].visits == undefined)
+    {
+        scatterplot[i].visits = 0;
+    }
+}
+console.log(scatterplot)
+var ageplot = [];
+var whiteplot = [];
+var bachplot =[];
+var h_schoolplot = [];
+var poverty_lplot = [];
+for(i = 0; i < statename.length; i++)
+{
+    ageplot.push({state: statename[i].State, vote:donaldfractionvote[statename[i].State], visits : age_65[statename[i].State]})
+    whiteplot.push({state: statename[i].State, vote:donaldfractionvote[statename[i].State], visits : whi_te[statename[i].State]})
+    bachplot.push({state: statename[i].State, vote:donaldfractionvote[statename[i].State], visits : bach[statename[i].State]})
+    h_schoolplot.push({state: statename[i].State, vote:donaldfractionvote[statename[i].State], visits : h_school[statename[i].State]})
+    poverty_lplot.push({state: statename[i].State, vote:donaldfractionvote[statename[i].State], visits : poverty_l[statename[i].State]})
+}
+//ageplot
+ for(i=0; i<ageplot.length; i++) { if(ageplot[i].vote == undefined)  {  ageplot[i].vote = 0;  } if(ageplot[i].visits == undefined) { ageplot[i].visits = 0;}}
+ //whiteplot
+for(i=0; i<whiteplot.length; i++) { if(whiteplot[i].vote == undefined)  {  whiteplot[i].vote = 0;  } if(whiteplot[i].visits == undefined) { whiteplot[i].visits = 0;}}
+//bachplot
+for(i=0; i<bachplot.length; i++) { if(bachplot[i].vote == undefined)  {  bachplot[i].vote = 0;  } if(bachplot[i].visits == undefined) { bachplot[i].visits = 0;}}
+//h_schoolplot
+for(i=0; i<h_schoolplot.length; i++) { if(h_schoolplot[i].vote == undefined)  {  h_schoolplot[i].vote = 0;  } if(h_schoolplot[i].visits == undefined) { h_schoolplot[i].visits = 0;}}
+//poverty_lplot
+for(i=0; i<poverty_lplot.length; i++) { if(poverty_lplot[i].vote == undefined)  {  poverty_lplot[i].vote = 0;  } if(poverty_lplot[i].visits == undefined) { poverty_lplot[i].visits = 0;}}
+   colormap(donaldstatevisit, donaldvotes, scatterplot, ageplot, whiteplot, bachplot,h_schoolplot,poverty_lplot,newData);
+   
+  });
+}
+function processdata(error, usstates, trips, simi, tripcount,statename, maxvote, countyfacts)
+ {
+     createmap(usstates, trips, simi, tripcount, statename, maxvote, countyfacts)
+ }
+ 
+ queue()
+    .defer(d3.json,"https://gist.githubusercontent.com/dkrathi457/968ded0a926dfebd17f5c028cd30becb/raw/6a56c5ac1e9321ecff38bff2071e63fd6f84f9f7/us.json")
+    .defer(d3.json , "https://gist.githubusercontent.com/dkrathi457/d2b67d780ffd4f9f167da4f8a94623ca/raw/d1757329dff109dcd7a0b5515789b46da52b87e1/primaryresults.json")
+    .defer(d3.json, "https://gist.githubusercontent.com/dkrathi457/f1b139170c8d0db752e41906d9cdc216/raw/3a181d755ec50a1b2ea98362a5e60fef6c94ff65/us-states.geojson")
+     .defer(d3.json, "https://gist.githubusercontent.com/dkrathi457/0f3115d34900338034541f41bbf7a291/raw/7b08ea577a6f29e6f4587fb4601da4c6160e805b/trips.json")
+     .defer(d3.json, "https://gist.githubusercontent.com/dkrathi457/1ace2e96b73a0d65df84cf1ed3580495/raw/f0fa291bb6673de5034261385058e1d9fbebfdc1/statename.json")
+     .defer(d3.csv, "https://gist.githubusercontent.com/dkrathi457/37fd7f1623f8c70a3ab69bc571c6bb4d/raw/8d090d1d4bb1c40cf1d08722f06e0d758d1621b0/maxvotecounty.csv")
+     .defer(d3.csv, "https://gist.githubusercontent.com/dkrathi457/ccba9c1c5c08c0e633ecac7ab16ab01a/raw/4053443e311b175de551b526ce814ebc45e00d53/countyfacts.csv")
+     .await(processdata)
+ </script>
+</body>
