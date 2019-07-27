@@ -1,0 +1,19 @@
+\addvspace {0\p@ }
+\addvspace {0\p@ }
+\addvspace {0\p@ }
+\contentsline {table}{\numberline {3.1}{\ignorespaces Details of the variables used in our method\relax }}{20}
+\contentsline {table}{\numberline {3.2}{\ignorespaces Transfer learning methods\relax }}{21}
+\addvspace {0\p@ }
+\addvspace {0\p@ }
+\contentsline {table}{\numberline {5.1}{\ignorespaces Comparison of IDT descriptors on single view classification.\relax }}{38}
+\contentsline {table}{\numberline {5.2}{\ignorespaces Cross-view action recognition without TL.\relax }}{39}
+\contentsline {table}{\numberline {5.3}{\ignorespaces Cross-view action recognition by TL methods.\relax }}{40}
+\contentsline {table}{\numberline {5.4}{\ignorespaces Cross-view action recognition by DL.\relax }}{41}
+\contentsline {table}{\numberline {5.5}{\ignorespaces Cross-view action recognition by JDTL.\relax }}{41}
+\contentsline {table}{\numberline {5.6}{\ignorespaces Cross-view action recognition by JDTL trained on View1 and tested on View2.\relax }}{42}
+\contentsline {table}{\numberline {5.7}{\ignorespaces Cross-view action recognition by JDTL trained on View2 and tested on View1.\relax }}{44}
+\contentsline {table}{\numberline {5.8}{\ignorespaces Cross-view action recognition by JDTL trained on View1 and tested on View3.\relax }}{47}
+\contentsline {table}{\numberline {5.9}{\ignorespaces Cross-view action recognition by JDTL trained on View3 and tested on View1.\relax }}{48}
+\contentsline {table}{\numberline {5.10}{\ignorespaces Cross-view action recognition by JDTL trained on View2 and tested on View3.\relax }}{53}
+\contentsline {table}{\numberline {5.11}{\ignorespaces Cross-view action recognition by JDTL trained on View3 and tested on View2.\relax }}{54}
+\addvspace {0\p@ }

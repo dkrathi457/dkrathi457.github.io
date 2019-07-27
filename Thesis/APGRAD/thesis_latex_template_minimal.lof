@@ -1,0 +1,26 @@
+\addvspace {0\p@ }
+\contentsline {figure}{\numberline {1.1}{\ignorespaces Illustration of cross-view action recognition in surveillance system.\relax }}{2}
+\addvspace {0\p@ }
+\addvspace {0\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces (a) Input image. (b) HOG features extracted from the image at different locations. (c) HOG features illustration.\relax }}{18}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Pipeline of basic dictionary learning and sparse coding.\relax }}{24}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Joint dictionary and transfer learning paradigm.\relax }}{24}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Overview of the proposed joint learning objective. Part of illustration is from\nobreakspace {}\cite {HengWang:2011:ARD:2191740.2192078}.\relax }}{25}
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Pipeline of joint dictionary and transfer learning.\relax }}{27}
+\addvspace {0\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces PKU-MMD video sample frames from three different angles.\relax }}{35}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Detection on PKU-MMD data frame.\relax }}{37}
+\addvspace {0\p@ }
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Cross-view action recognition by JDTL trained on View1 and tested on View2.\relax }}{43}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Cross-view action recognition by JDTL trained on View2 and tested on View1.\relax }}{44}
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Confusion matrix trained on View1 and tested on View2\relax }}{45}
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Confusion matrix trained on View2 and tested on View1.\relax }}{46}
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Cross-view action recognition by JDTL trained on View1 and tested on View3.\relax }}{48}
+\contentsline {figure}{\numberline {5.6}{\ignorespaces Cross-view action recognition by JDTL trained on View3 and tested on View1.\relax }}{49}
+\contentsline {figure}{\numberline {5.7}{\ignorespaces Confusion matrix trained on View1 and tested on View3\relax }}{50}
+\contentsline {figure}{\numberline {5.8}{\ignorespaces Confusion matrix trained on View3 and tested on View1.\relax }}{51}
+\contentsline {figure}{\numberline {5.9}{\ignorespaces Cross-view action recognition by JDTL trained on View2 and tested on View3.\relax }}{52}
+\contentsline {figure}{\numberline {5.10}{\ignorespaces Cross-view action recognition by JDTL trained on View3 and tested on View2.\relax }}{53}
+\contentsline {figure}{\numberline {5.11}{\ignorespaces Confusion matrix trained on View2 and tested on View3.\relax }}{55}
+\contentsline {figure}{\numberline {5.12}{\ignorespaces Confusion matrix trained on View3 and tested on View2.\relax }}{56}
+\addvspace {0\p@ }

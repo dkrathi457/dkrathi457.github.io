@@ -1,0 +1,516 @@
+\begin{thebibliography}{10}
+
+\bibitem{HengWang:2011:ARD:2191740.2192078}
+Heng Wang, Alexander Kl{\"a}ser, Cordelia Schmid, and Cheng-Lin Liu.
+\newblock Action recognition by dense trajectories.
+\newblock In {\em IEEE Conference on Computer Vision and Pattern Recognition},
+  pages 3169--3176, 2011.
+
+\bibitem{xiang2008video}
+Tao Xiang and Shaogang Gong.
+\newblock Video behavior profiling for anomaly detection.
+\newblock {\em IEEE Transactions on Pattern Analysis and Machine Intelligence},
+  30(5):893--908, 2008.
+
+\bibitem{MUBASHIR2013144}
+Muhammad Mubashir, Ling Shao, and Luke Seed.
+\newblock A survey on fall detection: Principles and approaches.
+\newblock {\em Neurocomputing}, 100:144--152, 2013.
+
+\bibitem{799904}
+Hyeon-Kyu Lee and Jin-Hyung Kim.
+\newblock An hmm-based threshold model approach for gesture recognition.
+\newblock {\em IEEE Transactions on Pattern Analysis and Machine Intelligence},
+  21(10):961--973, 1999.
+
+\bibitem{VALLIM20136258}
+Rosane M.~M. Vallim, Jos{\'e}~A. Andrade~Filho, Rodrigo~F. De~Mello, and
+  Andr{\'e} C. P. L.~F. De~Carvalho.
+\newblock Online behavior change detection in computer games.
+\newblock {\em Expert Systems with Applications}, 40(16):6258--6265, 2013.
+
+\bibitem{sharma2013expanded}
+Gaurav Sharma, Fr{\'e}d{\'e}ric Jurie, and Cordelia Schmid.
+\newblock Expanded parts model for human attribute and action recognition in
+  still images.
+\newblock In {\em Proceedings of the IEEE Conference on Computer Vision and
+  Pattern Recognition}, pages 652--659, 2013.
+
+\bibitem{liang2013learning}
+Xiaodan Liang, Liang Lin, and Liangliang Cao.
+\newblock Learning latent spatio-temporal compositional model for human action
+  recognition.
+\newblock In {\em Proceedings of the 21st ACM International Conference on
+  Multimedia}, pages 263--272. ACM, 2013.
+
+\bibitem{wu2014multi}
+Di~Wu and Ling Shao.
+\newblock Multi-max-margin support vector machine for multi-source human action
+  recognition.
+\newblock {\em Neurocomputing}, 127:98--103, 2014.
+
+\bibitem{benmokhtar2014robust}
+Rachid Benmokhtar.
+\newblock Robust human action recognition scheme based on high-level feature
+  fusion.
+\newblock {\em Multimedia Tools and Applications}, 69(2):253--275, 2014.
+
+\bibitem{papadopoulos2014real}
+Georgios~Th Papadopoulos, Apostolos Axenopoulos, and Petros Daras.
+\newblock Real-time skeleton-tracking-based human action recognition using
+  kinect data.
+\newblock In {\em International Conference on Multimedia Modeling}, pages
+  473--483. Springer, 2014.
+
+\bibitem{Efros:2003:RAD:946247.946720}
+Alexei~A. Efros, Alexander~C. Berg, Greg Mori, and Jitendra Malik.
+\newblock Recognizing action at a distance.
+\newblock In {\em Proceedings of the 9th IEEE International Conference on
+  Computer Vision}, pages 726--733, 2003.
+
+\bibitem{4270156}
+Fengjun Lv and Ramakant Nevatia.
+\newblock Single view human action recognition using key pose matching and
+  viterbi path searching.
+\newblock In {\em IEEE Conference on Computer Vision and Pattern Recognition},
+  pages 1--8, 2007.
+
+\bibitem{5459184}
+Zhe Lin, Zhuolin Jiang, and Larry~S. Davis.
+\newblock Recognizing actions by shape-motion prototype trees.
+\newblock In {\em IEEE 12th International Conference on Computer Vision}, pages
+  444--451, 2009.
+
+\bibitem{wang2013action}
+Heng Wang and Cordelia Schmid.
+\newblock Action recognition with improved trajectories.
+\newblock In {\em Proceedings of the IEEE International Conference on Computer
+  Vision}, pages 3551--3558, 2013.
+
+\bibitem{1238378}
+Laptev and Lindeberg.
+\newblock Space-time interest points.
+\newblock In {\em Proceedings of the 9th IEEE International Conference on
+  Computer Vision}, pages 432--439, 2003.
+
+\bibitem{8082519}
+Homa Foroughi, Nilanjan Ray, and Hong Zhang.
+\newblock Object classification with joint projection and low-rank dictionary
+  learning.
+\newblock {\em IEEE Transactions on Image Processing}, 27:806--821, 2018.
+
+\bibitem{4483511}
+John Wright, Allen~Y. Yang, Arvind Ganesh, S.~Shankar Sastry, and Yi~Ma.
+\newblock Robust face recognition via sparse representation.
+\newblock {\em IEEE Transactions on Pattern Analysis and Machine Intelligence},
+  31(2):210--227, 2009.
+
+\bibitem{zheng2016cross}
+Jingjing Zheng, Zhuolin Jiang, and Rama Chellappa.
+\newblock Cross-view action recognition via transferable dictionary learning.
+\newblock {\em IEEE Transactions on Image Processing}, 25(6):2542--2556, 2016.
+
+\bibitem{deng2014deep}
+Li~Deng, Dong Yu, et~al.
+\newblock Deep learning: methods and applications.
+\newblock {\em Foundations and Trends{\textregistered} in Signal Processing},
+  7(3-4):197--387, 2014.
+
+\bibitem{ji2010advances}
+Xiaofei Ji and Honghai Liu.
+\newblock Advances in view-invariant human motion analysis: A review.
+\newblock {\em IEEE Transactions on Systems, Man, and Cybernetics, Part C
+  (Applications and Reviews)}, 40(1):13--24, 2010.
+
+\bibitem{holte2011human}
+Michael~B. Holte, Cuong Tran, Mohan~M. Trivedi, and Thomas~B. Moeslund.
+\newblock Human action recognition using multiple views: a comparative
+  perspective on recent developments.
+\newblock In {\em Proceedings of the Joint ACM Workshop on Human Gesture and
+  Behavior Understanding}, pages 47--52. ACM, 2011.
+
+\bibitem{1315182}
+Greg Mori, Xiaofeng Ren, Alexei~A. Efros, and Jitendra Malik.
+\newblock Recovering human body configurations: Combining segmentation and
+  recognition.
+\newblock In {\em Proceedings of the IEEE Computer Society Conference on
+  Computer Vision and Pattern Recognition}, volume~2, pages II--II, 2004.
+
+\bibitem{1211340}
+K.~M.~G. Cheung, Simon Baker, and Takeo Kanade.
+\newblock Shape-from-silhouette of articulated objects and its use for human
+  body kinematics estimation and motion capture.
+\newblock In {\em IEEE Computer Society Conference on Computer Vision and
+  Pattern Recognition}, volume~1, pages I--I, 2003.
+
+\bibitem{4587527}
+Jingen Liu, Saad Ali, and Mubarak Shah.
+\newblock Recognizing human actions using multiple features.
+\newblock In {\em IEEE Conference on Computer Vision and Pattern Recognition},
+  pages 1--8, 2008.
+
+\bibitem{1467373}
+Alper Yilmaz and Mubarak Shah.
+\newblock Actions sketch: A novel action representation.
+\newblock In {\em IEEE Computer Society Conference on Computer Vision and
+  Pattern Recognition}, 2005.
+
+\bibitem{1544882}
+Moshe Blank, Lena Gorelick, Eli Shechtman, Michal Irani, and Ronen Basri.
+\newblock Actions as space-time shapes.
+\newblock In {\em IEEE 10th International Conference on Computer Vision Volume
+  1}, volume~2, pages 1395--1402, 2005.
+
+\bibitem{wang2013dense}
+Heng Wang, Alexander Kl{\"a}ser, Cordelia Schmid, and Cheng-Lin Liu.
+\newblock Dense trajectories and motion boundary descriptors for action
+  recognition.
+\newblock {\em International Journal of Computer Vision}, 103:60--79, 2013.
+
+\bibitem{10.1007/978-3-540-88688-4_22}
+Imran~N. Junejo, Emilie Dexter, Ivan Laptev, and Patrick P{\'e}rez.
+\newblock Cross-view action recognition from temporal self-similarities.
+\newblock In {\em European Conference on Computer Vision}, pages 293--306.
+  Springer Berlin Heidelberg, 2008.
+
+\bibitem{6939719}
+Yan Yan, Elisa Ricci, Ramanathan Subramanian, Gaowen Liu, and Nicu Sebe.
+\newblock Multitask linear discriminant analysis for view invariant action
+  recognition.
+\newblock {\em IEEE Transactions on Image Processing}, 23:5599--5611, 2014.
+
+\bibitem{zheng2013learning}
+Jingjing Zheng and Zhuolin Jiang.
+\newblock Learning view-invariant sparse representations for cross-view action
+  recognition.
+\newblock In {\em Proceedings of the IEEE International Conference on Computer
+  Vision}, pages 3176--3183, 2013.
+
+\bibitem{7045574}
+Wanqi Yang, Yang Gao, Yinghuan Shi, and Longbing Cao.
+\newblock Mrm-lasso: A sparse multiview feature selection method via low-rank
+  analysis.
+\newblock {\em IEEE Transactions on Neural Networks and Learning Systems},
+  26:2801--2815, 2015.
+
+\bibitem{7907301}
+Yu~Kong, Zhengming Ding, Jun Li, and Yun Fu.
+\newblock Deeply learned view-invariant features for cross-view action
+  recognition.
+\newblock {\em IEEE Transactions on Image Processing}, 26:3028--3037, 2017.
+
+\bibitem{6958807}
+Hong Lin, Lekha Chaisorn, Yongkang Wong, An-An Liu, Yu-Ting Su, and Mohan~S.
+  Kankanhalli.
+\newblock View-invariant feature discovering for multi-camera human action
+  recognition.
+\newblock In {\em IEEE 16th International Workshop on Multimedia Signal
+  Processing}, pages 1--6, 2014.
+
+\bibitem{Weiss2016}
+Karl Weiss, Taghi~M. Khoshgoftaar, and DingDing Wang.
+\newblock A survey of transfer learning.
+\newblock {\em Journal of Big Data}, 2016.
+
+\bibitem{daume2009frustratingly}
+Hal Daum{\'e}~III.
+\newblock Frustratingly easy domain adaptation.
+\newblock {\em arXiv preprint arXiv:0907.1815}, 2009.
+
+\bibitem{chattopadhyay2012multisource}
+Rita Chattopadhyay, Qian Sun, Wei Fan, Ian Davidson, Sethuraman Panchanathan,
+  and Jieping Ye.
+\newblock Multisource domain adaptation and its application to early detection
+  of fatigue.
+\newblock {\em ACM Transactions on Knowledge Discovery from Data}, 6(4):18,
+  2012.
+
+\bibitem{blitzer2006domain1}
+John Blitzer, Ryan McDonald, and Fernando Pereira.
+\newblock Domain adaptation with structural correspondence learning.
+\newblock In {\em Proceedings of the Conference on Empirical Methods in Natural
+  Language Processing}, pages 120--128, 2006.
+
+\bibitem{cook2013transfer}
+Diane Cook, Kyle~D. Feuz, and Narayanan~C. Krishnan.
+\newblock Transfer learning for activity recognition: A survey.
+\newblock {\em Knowledge and Information Systems}, 36(3):537--556, 2013.
+
+\bibitem{liu2017pku}
+Chunhui Liu, Yueyu Hu, Yanghao Li, Sijie Song, and Jiaying Liu.
+\newblock Pku-mmd: A large scale benchmark for continuous multi-modal human
+  action understanding.
+\newblock {\em arXiv preprint arXiv:1703.07475}, 2017.
+
+\bibitem{Laptev2005}
+Ivan Laptev.
+\newblock On space-time interest points.
+\newblock {\em International Journal of Computer Vision}, 64(2-3):107--123,
+  2005.
+
+\bibitem{6126543}
+Hildegard Kuehne, Hueihan Jhuang, Est{\'\i}baliz Garrote, Tomaso Poggio, and
+  Thomas Serre.
+\newblock Hmdb: a large video database for human motion recognition.
+\newblock In {\em IEEE International Conference on Computer Vision}, pages
+  2556--2563, 2011.
+
+\bibitem{Dollar:2005:BRV:1259587.1259830}
+Piotr Doll{\'a}r, Vincent Rabaud, Garrison Cottrell, and Serge Belongie.
+\newblock Behavior recognition via sparse spatio-temporal features.
+\newblock In {\em IEEE International Workshop on Visual Surveillance and
+  Performance Evaluation of Tracking and Surveillance}, pages 65--72, 2005.
+
+\bibitem{Willems2008}
+Geert Willems, Tinne Tuytelaars, and Luc Van~Gool.
+\newblock An efficient dense and scale-invariant spatio-temporal interest point
+  detector.
+\newblock In {\em European Conference on Computer Vision}, pages 650--663.
+  Springer, Berlin,Heidelberg, 2008.
+
+\bibitem{tuytelaars2008local12}
+Tinne Tuytelaars, Krystian Mikolajczyk, et~al.
+\newblock Local invariant feature detectors: A survey.
+\newblock {\em Foundations and Trends{\textregistered} in Computer Graphics and
+  Vision}, 3(3):177--280, 2008.
+
+\bibitem{6233178}
+Amir~H. Shabani, David~A. Clausi, and John~S. Zelek.
+\newblock Evaluation of local spatio-temporal salient feature detectors for
+  human action recognition.
+\newblock In {\em 9th Conference on Computer and Robot Vision}, pages 468--475,
+  2012.
+
+\bibitem{wang2009evaluation}
+Heng Wang, Muhammad~Muneeb Ullah, Alexander Klaser, Ivan Laptev, and Cordelia
+  Schmid.
+\newblock Evaluation of local spatio-temporal features for action recognition.
+\newblock In {\em British Machine Vision Conference}, pages 124--1. BMVA Press,
+  2009.
+
+\bibitem{1467360}
+Navneet Dalal and Bill Triggs.
+\newblock Histograms of oriented gradients for human detection.
+\newblock In {\em IEEE Computer Society Conference on Computer Vision and
+  Pattern Recognition}, volume~1, pages 886--893, 2005.
+
+\bibitem{dalal2006human}
+Navneet Dalal, Bill Triggs, and Cordelia Schmid.
+\newblock Human detection using oriented histograms of flow and appearance.
+\newblock In {\em European Conference on Computer Vision}, pages 428--441,
+  2006.
+
+\bibitem{Lowe:2004:DIF:993451.996342}
+David~G. Lowe.
+\newblock Distinctive image features from scale-invariant keypoints.
+\newblock {\em International Journal of Computer Vision}, 60(2):91--110, 2004.
+
+\bibitem{sun2010activity}
+Ju~Sun, Yadong Mu, Shuicheng Yan, and Loong-Fah Cheong.
+\newblock Activity recognition using dense long-duration trajectories.
+\newblock In {\em IEEE International Conference on Multimedia and Expo}, pages
+  322--327, 2010.
+
+\bibitem{lucas1981iterative1}
+Bruce~D. Lucas, Takeo Kanade, et~al.
+\newblock An iterative image registration technique with an application to
+  stereo vision.
+\newblock In {\em Proceedings of the 7th International Joint Conference on
+  Artificial Intelligence - Volume 2}, pages 674--679, 1981.
+
+\bibitem{tosic2011dictionary}
+Ivana Tosic and Pascal Frossard.
+\newblock Dictionary learning.
+\newblock {\em IEEE Signal Processing Magazine}, 28(2):27--38, 2011.
+
+\bibitem{xu2017survey}
+Yong Xu, Zhengming Li, Jian Yang, and David Zhang.
+\newblock A survey of dictionary learning algorithms for face recognition.
+\newblock {\em IEEE Access}, 5:8502--8514, 2017.
+
+\bibitem{zhang2015survey}
+Zheng Zhang, Yong Xu, Jian Yang, Xuelong Li, and David Zhang.
+\newblock A survey of sparse representation: algorithms and applications.
+\newblock {\em IEEE Access}, 3:490--530, 2015.
+
+\bibitem{mallat1993matching}
+St{\'e}phane Mallat and Zhifeng Zhang.
+\newblock Matching pursuit with time-frequency dictionaries.
+\newblock {\em IEEE Transactions on Signal Processing}, 41(12):3397--3415,
+  1993.
+
+\bibitem{tropp2007signal}
+Joel~A. Tropp and Anna~C. Gilbert.
+\newblock Signal recovery from random measurements via orthogonal matching
+  pursuit.
+\newblock {\em IEEE Transactions on Information Theory}, 53(12):4655--4666,
+  2007.
+
+\bibitem{pati1993orthogonal}
+Yagyensh~Chandra Pati, Ramin Rezaiifar, and Perinkulam~Sambamurthy
+  Krishnaprasad.
+\newblock Orthogonal matching pursuit: Recursive function approximation with
+  applications to wavelet decomposition.
+\newblock In {\em Proceedings of the 27th Asilomar Conference on Signals,
+  Systems and Computers}, pages 40--44, 1993.
+
+\bibitem{1710377}
+Michal Aharon, Michael Elad, and Alfred Bruckstein.
+\newblock K-svd: An algorithm for designing overcomplete dictionaries for
+  sparse representation.
+\newblock {\em IEEE Transactions on Signal Processing}, 54(11):4311, 2006.
+
+\bibitem{612628612}
+Meng Yang, Lei Zhang, Xiangchu Feng, and David Zhang.
+\newblock Fisher discrimination dictionary learning for sparse representation.
+\newblock In {\em IEEE International Conference on Computer Vision}, pages
+  543--550, 2011.
+
+\bibitem{kong2012dictionary}
+Shu Kong and Donghui Wang.
+\newblock A dictionary learning approach for classification: separating the
+  particularity and the commonality.
+\newblock In {\em European Conference on Computer Vision}, pages 186--199.
+  Springer, Berlin, Heidelberg, 2012.
+
+\bibitem{ramirez2010classification}
+Ignacio Ramirez, Pablo Sprechmann, and Guillermo Sapiro.
+\newblock Classification and clustering via dictionary learning with structured
+  incoherence and shared features.
+\newblock In {\em IEEE Computer Society Conference on Computer Vision and
+  Pattern Recognition}, pages 3501--3508, 2010.
+
+\bibitem{zhou2014jointly}
+Ning Zhou and Jianping Fan.
+\newblock Jointly learning visually correlated dictionaries for large-scale
+  visual recognition applications.
+\newblock {\em IEEE Transactions on Pattern Analysis and Machine Intelligence},
+  36(4):715--730, 2014.
+
+\bibitem{wright2009robust}
+John Wright, Allen~Y Yang, Arvind Ganesh, S~Shankar Sastry, and Yi~Ma.
+\newblock Robust face recognition via sparse representation.
+\newblock {\em IEEE Transactions on Pattern Analysis and Machine Intelligence},
+  31(2):210--227, 2009.
+
+\bibitem{vu2015dfdl}
+Tiep~H. Vu, Hojjat~S. Mousavi, Vishal Monga, U.~K.~Arvind Rao, and Ganesh Rao.
+\newblock Dfdl: Discriminative feature-oriented dictionary learning for
+  histopathological image classification.
+\newblock In {\em IEEE 12th International Symposium on Biomedical Imaging},
+  pages 990--994, 2015.
+
+\bibitem{gao2014learning}
+Shenghua Gao, Ivor Wai-Hung Tsang, and Yi~Ma.
+\newblock Learning category-specific dictionary and shared dictionary for
+  fine-grained image categorization.
+\newblock {\em IEEE Transactions on Image Processing}, 23(2):623--634, 2014.
+
+\bibitem{7987024}
+Tiep~Huu Vu and Vishal Monga.
+\newblock Fast low-rank shared dictionary learning for image classification.
+\newblock {\em IEEE Transactions on Image Processing}, 26(11):5160--5175, 2017.
+
+\bibitem{5288526}
+Sinno~Jialin Pan, Qiang Yang, et~al.
+\newblock A survey on transfer learning.
+\newblock {\em IEEE Transactions on Knowledge and Data Engineering}, 2010.
+
+\bibitem{arnold2007comparative}
+Andrew Arnold, Ramesh Nallapati, and William~W. Cohen.
+\newblock A comparative study of methods for transductive transfer learning.
+\newblock In {\em ICDM Workshops}, pages 77--82, 2007.
+
+\bibitem{bilinski2014human}
+Piotr~Tadeusz Bili{\'n}ski.
+\newblock {\em Human action recognition in videos}.
+\newblock PhD thesis, Universit{\'e} Nice Sophia Antipolis, 2014.
+
+\bibitem{farneback2003two}
+Gunnar Farneb{\"a}ck.
+\newblock Two-frame motion estimation based on polynomial expansion.
+\newblock In {\em Scandinavian Conference on Image Analysis}, pages 363--370,
+  2003.
+
+\bibitem{bay2008}
+Herbert Bay, Andreas Ess, Tinne Tuytelaars, and Luc Van~Gool.
+\newblock Speeded-up robust features (surf).
+\newblock {\em Computer Vision and Image Understanding}, 110:346--359, 2008.
+
+\bibitem{fischler1981random}
+Martin~A. Fischler and Robert~C. Bolles.
+\newblock Random sample consensus: A paradigm for model fitting with
+  applications to image analysis and automated cartography.
+\newblock {\em Commun. ACM}, 24:381--395, 1981.
+
+\bibitem{perronnin2010improving}
+Florent Perronnin, Jorge S{\'a}nchez, and Thomas Mensink.
+\newblock Improving the fisher kernel for large-scale image classification.
+\newblock In {\em European Conference on Computer Vision}, pages 143--156.
+  Springer, Berlin, Heidelberg, 2010.
+
+\bibitem{perronnin2007fisher}
+Florent Perronnin and Christopher Dance.
+\newblock Fisher kernels on visual vocabularies for image categorization.
+\newblock In {\em IEEE Conference on Computer Vision and Pattern Recognition},
+  pages 1--8, 2007.
+
+\bibitem{simonyan2013fisher}
+Karen Simonyan, Omkar~M. Parkhi, Andrea Vedaldi, and Andrew Zisserman.
+\newblock Fisher vector faces in the wild.
+\newblock In {\em British Machine Vision Conference}, volume~2, page~4, 2013.
+
+\bibitem{pan2011domain}
+Tsang Ivor~W. Pan, Sinno~Jialin, James~T. Kwok, and Qiang Yang.
+\newblock Domain adaptation via transfer component analysis.
+\newblock {\em IEEE Transactions on Neural Networks}, 22:199--210, 2011.
+
+\bibitem{8258419}
+Deepak Kumar, Chetan Kumar, and Ming Shao.
+\newblock Cross-database mammographic image analysis through unsupervised
+  domain adaptation.
+\newblock In {\em IEEE International Conference on Big Data}, pages 4035--4042,
+  2017.
+
+\bibitem{6751384}
+Mingsheng Long, Jianmin Wang, Guiguang Ding, Jiaguang Sun, and Philip~S. Yu.
+\newblock Transfer feature learning with joint distribution adaptation.
+\newblock In {\em Proceedings of the IEEE International Conference on Computer
+  Vision}, pages 2200--2207, 2013.
+
+\bibitem{wang2017}
+Jindong Wang, Yiqiang Chen, Shuji Hao, Wenjie Feng, and Zhiqi Shen.
+\newblock Balanced distribution adaptation for transfer learning.
+\newblock In {\em IEEE International Conference on Data Mining}, pages
+  1129--1134, 2017.
+
+\bibitem{beck2009fast}
+Amir Beck and Marc Teboulle.
+\newblock A fast iterative shrinkage-thresholding algorithm for linear inverse
+  problems.
+\newblock {\em Siam Journal on Imaging Sciences}, 2009.
+
+\bibitem{boyd2011distributed36}
+Stephen Boyd, Neal Parikh, Eric Chu, Borja Peleato, Jonathan Eckstein, et~al.
+\newblock Distributed optimization and statistical learning via the alternating
+  direction method of multipliers.
+\newblock {\em Foundations and Trends{\textregistered} in Machine learning},
+  3(1):1--122, 2011.
+
+\bibitem{cai2010singular}
+Jian-Feng Cai, Emmanuel~J Cand{\`e}s, and Zuowei Shen.
+\newblock A singular value thresholding algorithm for matrix completion.
+\newblock {\em SIAM Journal on Optimization}, 20(4):1956--1982, 2010.
+
+\bibitem{mairal2010online}
+Julien Mairal, Francis Bach, Jean Ponce, and Guillermo Sapiro.
+\newblock Online learning for matrix factorization and sparse coding.
+\newblock {\em Journal of Machine Learning Research}, 11:19--60, 2010.
+
+\bibitem{DBLP:journals/corr/RedmonF16}
+Joseph Redmon and Ali Farhadi.
+\newblock Yolo9000: better, faster, stronger.
+\newblock In {\em Proceedings of the IEEE Conference on Computer Vision and
+  Pattern Recognition}, pages 7263--7271, 2017.
+
+\end{thebibliography}

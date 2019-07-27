@@ -1,0 +1,112 @@
+\chapter{Methodology}
+\label{methods}
+%\pagenumbering{arabic} 
+In this section, we discuss our novel framework implementation and also discuss different methods which are used in our framework. Our framework is based on three steps. In the first step, visual descriptors are extracted from videos using Improved Dense Trajectory method (IDT)~\cite{wang2013action}. Second, Gaussian Mixture Model (GMM) and Fisher Vector are used for feature representation. In the last, we jointly learn the dictionary and projection matrix via transfer learning to get the discriminative and transferable features for cross-view action recognition. The Joint Dictionary and Transfer Learning (JDTL) framework is an iterative process. First, the new projection matrix is obtained by using different transfer learning methods, then a dictionary is learned by fixing the projection matrix and coefficients, and finally coefficients are learned by fixing the projection matrix and updated dictionary.
+
+\section{Feature Extraction}
+The first step of our framework is to extract the features from videos. Improved Dense Trajectories (IDT) is a state-of-the-art method used for feature extraction in our study. In brief, IDT was introduced by Wang et al.~\cite{wang2013action} and is extended from dense trajectories~\cite{wang2013dense,bilinski2014human}. Dense Trajectory densely sample the feature points in video frame and track those detected features points in upcoming video frames, while IDT improves dense trajectories by explicitly estimating camera motion. %\\
+
+\noindent
+\textbf{Dense Trajectories (DT). }
+It is difficult to determine the best scale to track feature points, and therefore dense trajectories are extracted from multiple spatial scales. Feature points are sampled in each frame of a video on a grid spaced by ${W}$ pixels. To obtain enough dense trajectories and catch significant motion information, the parameter $W$ is set to 5 pixels. Once feature points are extracted, these are tracked in each video frame in each spatial scale separately. Eight spatial scales are used, and each spatial scale is increased by a factor of  $\frac{1}{\sqrt{2}}$. 
+
+Dense optical flow field $w_{t}$ is computed from frame $I_{t}$ to the following frame $I_{t+1}$, using the Farneback algorithm~\cite{farneback2003two}. Each point $P_{t} = (x_{t}, y_{t})$ at frame $t$ is tracked to the next frame $t+1$ by median filtering in dense optical flow field $w_{t} = (u_{t}, v_{t})$, where $u_{t}$, and $v_{t}$ are the horizontal and vertical components of optical flow respectively. 
+\begin{equation}
+\begin{aligned}
+P_{t+1}\ =\ (x_{t+1},\ y_{t+1})\ =(x_{t},\ y_{t})\ +\ (M\ast\ w)\ |_{(\bar{x}_t,\ \ \bar{y}_t)}\ 
+\end{aligned}
+\end{equation}
+
+\noindent
+\textbf{DT Descriptors: Trajectory shape, HOG, HOF, and MBH. }
+Wang et al.~\cite{wang2013action} proposed the trajectory shape descriptor to encode a form of the extracted dense trajectories. A sequence of displacement vectors normalized by the sum of displacement vectors magnitudes describe the trajectory shape.
+
+In a space-time volume around a trajectory, three descriptors (HOG, HOF, and MBH) are calculated. Each local volume is subdivided into a grid with $ n_{x} \times n_{y} \times n_{t}$ spatio-temporal cells in order to embed structure information. A histogram descriptor is calculated for each cell of the grid. The histograms are normalized with $L_{2}$ norm, and then normalized cells are concatenated into the final descriptors. 
+
+Similarly, the HOG and HOF descriptors are calculated for spatio-temporal interest points. In this case, edge and optical flow orientations are quantized into 8 bins using full orientations, with the HOF descriptor having an additional zero bin. The example of HOG is shown in Figure~\ref{fig:HOG-Example}, where in (a) the image is the input image, (b) input image with extracted HOG features at different locations on input image, and in (c) extracted HOG features from input image are illustrated.
+
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=.55\textheight]{figures/HOG-final2}
+	\linebreak
+	\caption{(a) Input image. (b) HOG features extracted from the image at different locations. (c) HOG features illustration.}
+	\label{fig:HOG-Example}
+\end{figure}
+
+Dalal et al.~\cite{dalal2006human} proposed the Motion Boundary Histogram (MBH) descriptor to detect human. Optical flow field $I_{w} = (I_{x}, I_{y})$ is separated into its $x$ and $y$ components. Spatial derivatives for the horizontal and vertical components of the optical flow field are computed separately, and the orientation information is quantized into histograms. Background motion is eliminated by suppressing the constant motion information and keeping the information about changes in the flow field.   
+
+IDT boosts the recognition performance of dense trajectories by taking camera motion into account.\ It assumes that background motion of two consecutive frames can be characterized by a homography matrix.\ To estimate the homography matrix, the first step is to find the correspondence between two consecutive frames. They resort to SURF~\cite{bay2008} feature matching and optical flow based matching, as these two kinds of matching schemes are complementary to each other. Then RANSAC~\cite{fischler1981random} algorithm is used to estimate the homography matrix.\ Based on the homography matrix, they rectify the frame image to remove camera motion and re-calculate the optical flow called \textit{wrapped flow}. There are two major advantages for dense trajectories to cancel out camera motion from optical flow. First, this brings advantages to the descriptor calculated from optical flows, in particular for HOF. Second, trajectories generated due to camera motion can be removed.
+
+It describes the deviation of orignal set of features from average distribution of features modeled by parametric generative model, 
+\section{Feature Representation}
+Once local features are extracted, these are used to represent actions in videos. As the length of each video is different, we refer to \textbf{Fisher Vector (FV)}, one of most efficient vector quantization method to represent each video and achieve a fixed length vector~\cite{perronnin2010improving,perronnin2007fisher}. FV is an extension of bag-of-visual word representation and its encoding represents differences between features and visual words. FV has achieved remarkable results as a global descriptor both for image classification and for image retrieval, outperforming the conventional bag-of-features approach.
+Given a large set of vectors, the FV method assembles them into a high dimensional representation.
+So, in the first stage diagonal covariance was used to train the Gaussian Mixture Model (GMM), and derivatives are considered with respect to gaussian mean and variance~\cite{simonyan2013fisher}. It gives the representation, which captures the average first and second order differences between the original feature and each of the GMM centers:
+\begin{equation}
+\begin{aligned}
+\Phi_k^{(1)} & = \frac{1}{N  \sqrt[]{W_k}} \sum_{p=1}^{N}\ \alpha_p(k)\Bigg(\frac{x_p -\mu_k}{\sigma_k}\Bigg), \\
+\Phi_k^{(2)} & = \frac{1}{N \sqrt[]{2W_k}} \sum_{p=1}^{N}\ \alpha_p(k)\Bigg(\frac{(x_p -\mu_k)^2}{\sigma_k^2} -1  \Bigg),
+\end{aligned}
+\end{equation}
+where $\{w_k, \mu_k, \sigma_k\}_k$ are mixture weights, means, and diagonal covariances of GMM.  $\alpha_p(k)$ is the soft assignment weight of the $p$-th feature $x_p$ to the $k$-th Gaussian. An FV $\Phi$ is obtained by stacking the differences: $ \Phi = [{\Phi_1^{(1)},\Phi_1^{(2)},.....,\Phi_K^{(1)},\Phi_K^{(2)} }]$. The final encoded vector shows the difference between distribution of video features and distribution fitted to the features of all training videos.
+\begin{table}[h]
+	\centering
+	\caption{Details of the variables used in our method} 
+	\begin{tabular}{@{\extracolsep{12pt}}|c|l|}
+		\hline
+		\textbf{Variable} & \textbf{Description} \\ \hline
+		$P$	&  Projection Matrix           \\ \hline
+		$Y$	&  Training Sample            \\ \hline
+		$D_0$	& Shared Dictionary             \\ \hline
+		$D_j$	& Class-specific Dictionary            \\ \hline
+		$\bar{D}$	& Total Dictionary that includes class-specific and shared dictionary            \\ \hline
+		$X_0$	& Shared Coefficients            \\ \hline
+		$X_c$	& Class-Specific Coefficients             \\ \hline
+		$M$	&  Each Dictionary Column Mean Vector            \\ \hline
+		$M_0$	&  Shared Coefficient Mean Vector            \\ \hline
+		$M_c$	& Class-specific Coefficient Mean Vector             \\ \hline
+		
+		$J$	& Input Data Matrix (Transfer Learning)             \\ \hline
+		%$D_s$    &  Source Domain            \\ \hline
+		%$D_t$	 & Target Domain            \\ \hline
+		$J_s$	 & Source Task  \\ \hline
+		$J_t$  	&  Target Task  \\ \hline
+		$L_t$		& Target Label            \\ \hline
+		$L_s$		& Source Label            \\ \hline
+		$I$	& Identity Matrix             \\ \hline
+		%$m,c$	& Shared Feature/Classes             \\ \hline
+		$M_d$	& Maximum Mean Discrepancy (MMD) Matrix             \\ \hline
+		$M_{d_c}$ & Maximum Mean Discrepancy (MMD) Matrices involving class labels \\ \hline
+		$K$	& Input Kernel Parameter             \\ \hline
+		%$\phi$	& Feature Map induced by Kernel             \\ \hline
+		$\mathcal{P}$	&  Marginal Distribution           \\ \hline	
+		$\mathcal{Q}$	&  Conditional function           \\ \hline
+		$H$	&  Centering Matrix           \\ \hline	
+		$\triangleq$ & equal by definition \\ \hline	
+		$\mu ,\lambda$	&  Trade-off Parameter/Regularize parameter\\ \hline		
+	\end{tabular}
+	\label{tb:TLVariable}
+\end{table}
+\noindent
+\section{Transfer Learning}
+Transfer learning is employed in this chapter to map the source (one view) and target (another view) features into a common subspace. The transfer learning methods are categorized in supervised, semi-supervised and unsupervised as we described in related work, and we detail four methods below which will be incorporated into the joint learning framework. The variables and  basic formulation in this chapter can be found in Table~\ref{tb:TLVariable} and~\ref{table:tcl}.
+\begin{table}[h]
+	\footnotesize
+	%\large
+	\centering
+	\caption{Transfer learning methods} 
+	%	\resizebox{\textwidth}{!} {%
+	\begin{tabular}{|m{2cm}|m{9cm}|m{2.9cm}|}
+		\hline   
+		Method & Learning Objective & Constraints  \\ 
+		\hline
+		Transfer Component Analysis&  $\min_W \textbf{tr}(W^\T W) + \mu \ \textbf{tr}(W^\T KLKW)$ &$W^\T KHKW = I$\\ \hline
+		Joint Distribution Adaptation&$\min\ \sum_{C}^{c=0} \textbf{tr}(J^\T JM_{d_c}J^\T A) \ + \ \lambda ||A||_F^2 $ & $A^\T JHJ^\T A= I$           \\ \hline
+		Balance Distribution Adaptation&  $\min \  \textbf{tr} \bigg(A^\T J \bigg((1-\mu )M_{d_0} \ + \mu \sum_{c=1}^{C}M_{d_c}\bigg)J^\T A \bigg)\ +\lambda||A||_F^2$&$A^\T JHJ^\T A= I$ , $0\leq \mu \leq 1$         \\ \hline
+		Transfer Joint Matching & $\min \textbf{tr}(A^\T KM_dK^\T A)\ +\lambda \big(||A_s||_{2,1} + ||A_t||_F^2 \big)$ &$A^\T KHK^\T A= I $           \\  \hline
+		%\hline
+	\end{tabular}%
+	%	}
+	\label{table:tcl}
+\end{table}

@@ -1,0 +1,11 @@
+\chapter{Conclusions}
+\label{conclusion}
+In this study, we proposed a new joint learning model to address problem of cross-view action recognition where we trained the model in one view and tested the model in a different view. For this purpose, we developed a joint dictionary and transfer learning framework. The dictionary generated the view-independent discriminative features while the transfer learning projected those discriminative features into a common subspace. Specifically, Improve Dense Trajectory (IDT) visual descriptor is applied for robust action feature extraction. State-of-the-arts transfer learning methods were applied and integrated in our model for comparison. Extended evaluations were done on PKU-MMD multi-view dataset, and our proposed approach showed significant results compared to existing methods.
+
+For the future work, the short-term plan is to extend this work by considering recent deep learning features such as two-stream deep model. It learns the semantic representation from raw data and considers both spatial and temporal information. In addition to this, our proposed approach is only evaluated on five action classes, but we are planning to add more action classes which include interactions between two individuals.
+ 
+In a long-term plan for the improvement and extension of proposed approach, we may consider zero-shot learning and action prediction problem in multi-view setting. In zero-shot learning, a model is constructed on the labeled training set of seen classes to discover the semantic relationship between seen and newly available unseen classes in test data. While the motive for multi-view action prediction problem is to recognize the action (future action) from incomplete action execution where multi-view information can be utilized to avoid the scene loss and recover the blocked and cluttered views. In addition, we will consider improving our approach by recognizing actions of multiple people in a single video.
+
+%\pagenumbering{arabic} 
+
+
